@@ -48,7 +48,8 @@ function! s:hasUnactionableLines()
     " Ignores comment lines, if global option is configured
     if (g:cosco_ignore_comment_lines == 1)
         " TODO: The current regex expects 'comment' to be at the start of the string. Replace that with one that will find 'comment' anywhere.
-        echom synIDattr(synID(line("."),col("."),1),"name")
+        redraw
+        echo synIDattr(synID(line("."),col("."),1),"name")
         let l:isComment = synIDattr(synID(line("."),col("."),1),"name") =~ '\ccomment'
         if l:isComment
             return 1
